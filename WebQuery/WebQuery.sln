@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebQuery", "WebQuery.csproj", "{3A417793-7FF8-42EC-994E-C8B12F3965CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A417793-7FF8-42EC-994E-C8B12F3965CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A417793-7FF8-42EC-994E-C8B12F3965CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A417793-7FF8-42EC-994E-C8B12F3965CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A417793-7FF8-42EC-994E-C8B12F3965CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {580E75E2-B17E-4105-892F-E20E2D7AE127}
+	EndGlobalSection
+EndGlobal
