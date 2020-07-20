@@ -1,0 +1,48 @@
+﻿@model IEnumerable<QueryOne>
+@{ 
+    ViewData["Title"] = "Resultado de Consulta";
+}
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Pedido</td>
+                <td>Fecha</td>
+                <td>Cliente_Nit</td>
+                <td>Cliente_Suc</td>
+                <td>Cliente</td>
+                <td>Co_Id</td>
+                <td>Centro_Operacion</td>
+                <td>Bodega_Id</td>
+                <td>Bodega</td>
+                <td>Item_Id</td>
+                <td>Item</td>
+                <td>Unidad_Pedida</td>
+                <td>Cantidad_Ped</td>
+                <td>Estado</td>
+                <td>Error</td>
+            </tr>
+        </thead>  
+              <tbody>
+                  @foreach (var item in Model)
+                  {
+                  <tr>
+                      <td>@item.Pedido</td>
+                      <td>@item.Fecha</td>
+                      <td>@item.Cliente_Nit</td>
+                      <td>@item.Cliente_Suc</td>
+                      <td>@item.Cliente</td>
+                      <td>@item.Co_Id</td>
+                      <td>@item.Centro_Operacion</td>
+                      <td>@item.Bodega_Id</td>
+                      <td>@item.Bodega</td>
+                      <td>@item.Item_Id</td>
+                      <td>@item.Item</td>
+                      <td>@item.Unidad_Pedida</td>
+                      <td>@item.Cantidad_Ped</td>
+                      <td>@item.Estado</td>
+                      <td>@item.Error</td>
+                  </tr>
+                  }
+              </tbody>
+        
+    </table>
