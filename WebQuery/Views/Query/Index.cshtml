@@ -1,48 +1,90 @@
-﻿@model IEnumerable<QueryOne>
-@{ 
+﻿@model WebQuery.DAO.Pag<QueryOne>
+@{
     ViewData["Title"] = "Resultado de Consulta";
 }
-    <table class="table">
-        <thead>
+
+<form asp-action="Index" method="get">
+    <div class="form-action no-color">
+        <p>
+            Filtro: <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Buscar" class="btn btn-default" />
+            <a asp-action="Index">Todos los Registros</a> | Registros encontrados @Model.TotalR
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["NombreSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Pedido</a></th>
+            <th>Fecha</th>
+            <th>Cliente_Nit</th>
+            <th>Cliente_Suc</th>
+            <th>Cliente</th>
+            <th>Co_Id</th>
+            <th>Centro_Operacion</th>
+            <th>Bodega_Id</th>
+            <th>Bodega</th>
+            <th>Item_Id</th>
+            <th>Item</th>
+            <th>Unidad_Pedida</th>
+            <th>Cantidad_Ped</th>
+            <th>Estado</th>
+            <th>Error<</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <td>Pedido</td>
-                <td>Fecha</td>
-                <td>Cliente_Nit</td>
-                <td>Cliente_Suc</td>
-                <td>Cliente</td>
-                <td>Co_Id</td>
-                <td>Centro_Operacion</td>
-                <td>Bodega_Id</td>
-                <td>Bodega</td>
-                <td>Item_Id</td>
-                <td>Item</td>
-                <td>Unidad_Pedida</td>
-                <td>Cantidad_Ped</td>
-                <td>Estado</td>
-                <td>Error</td>
+                <td>@item.Pedido</td>
+                <td>@item.Fecha</td>
+                <td>@item.Cliente_Nit</td>
+                <td>@item.Cliente_Suc</td>
+                <td>@item.Cliente</td>
+                <td>@item.Co_Id</td>
+                <td>@item.Centro_Operacion</td>
+                <td>@item.Bodega_Id</td>
+                <td>@item.Bodega</td>
+                <td>@item.Item_Id</td>
+                <td>@item.Item</td>
+                <td>@item.Unidad_Pedida</td>
+                <td>@item.Cantidad_Ped</td>
+                <td>@item.Estado</td>
+                <td>@item.Error</td>
             </tr>
-        </thead>  
-              <tbody>
-                  @foreach (var item in Model)
-                  {
-                  <tr>
-                      <td>@item.Pedido</td>
-                      <td>@item.Fecha</td>
-                      <td>@item.Cliente_Nit</td>
-                      <td>@item.Cliente_Suc</td>
-                      <td>@item.Cliente</td>
-                      <td>@item.Co_Id</td>
-                      <td>@item.Centro_Operacion</td>
-                      <td>@item.Bodega_Id</td>
-                      <td>@item.Bodega</td>
-                      <td>@item.Item_Id</td>
-                      <td>@item.Item</td>
-                      <td>@item.Unidad_Pedida</td>
-                      <td>@item.Cantidad_Ped</td>
-                      <td>@item.Estado</td>
-                      <td>@item.Error</td>
-                  </tr>
-                  }
-              </tbody>
-        
-    </table>
+        }
+    </tbody>
+
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex+1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   
+   class="btn btn-default @prevDisabled">
+    Anterior
+</a>
+@for (int i = 1; i <= Model.TotalPages; i++)
+{
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-page="@i"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default">
+       @i
+    </a>
+}
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex+1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-dataView="@ViewData["Data"]"
+   class="btn btn-default @nextDisabled">
+    Siguiente
+</a>
