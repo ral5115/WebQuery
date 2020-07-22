@@ -7,8 +7,8 @@
     <div class="form-action no-color">
         <p>
             Filtro: <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Buscar" class="btn btn-default" />
-            <a asp-action="Index">Todos los Registros</a> | Registros encontrados @Model.TotalR
+            <input type="submit" value="Buscar" class="btn btn-default" onclick="process()" />
+            <a asp-action="Index" onclick="process()">Todos los Registros</a> | Registros encontrados @Model.TotalR
         </p>
     </div>
 </form>
@@ -18,19 +18,19 @@
         <tr>
             <th><a asp-action="Index" asp-route-sortOrder="@ViewData["NombreSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Pedido</a></th>
             <th>Fecha</th>
-            <th>Cliente_Nit</th>
-            <th>Cliente_Suc</th>
+            <th>Nit Cliente</th>
+            <th>Cliente Sucursal</th>
             <th>Cliente</th>
-            <th>Co_Id</th>
-            <th>Centro_Operacion</th>
-            <th>Bodega_Id</th>
+            <th>Id Centro Operacion</th>
+            <th>Centro Operacion</th>
+            <th>Id Bodega</th>
             <th>Bodega</th>
-            <th>Item_Id</th>
+            <th>Id Item</th>
             <th>Item</th>
-            <th>Unidad_Pedida</th>
-            <th>Cantidad_Ped</th>
+            <th>Unidad Pedida</th>
+            <th>Cantidad Pedida</th>
             <th>Estado</th>
-            <th>Error<</th>
+            <th>Error</th>
         </tr>
     </thead>
     <tbody>
@@ -61,22 +61,34 @@
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var pageIndex = Model.PageIndex;
+    var numberPage = "";
 }
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-page="@(Model.PageIndex+1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    
-   class="btn btn-default @prevDisabled">
+   class="btn btn-default @prevDisabled"
+   onclick="process()">
     Anterior
 </a>
 @for (int i = 1; i <= Model.TotalPages; i++)
 {
+    if (pageIndex == i)
+    {
+        numberPage = "disabled";
+    }
+    else
+    {
+        numberPage = "";
+    }
     <a asp-action="Index"
        asp-route-sortOrder="@ViewData["CurrentSort"]"
        asp-route-page="@i"
        asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-default">
+       class="btn btn-default @numberPage"
+       onclick="process()">
        @i
     </a>
 }
@@ -85,6 +97,7 @@
    asp-route-page="@(Model.PageIndex+1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
    asp-route-dataView="@ViewData["Data"]"
-   class="btn btn-default @nextDisabled">
+   class="btn btn-default @nextDisabled"
+   onclick="process()">
     Siguiente
 </a>

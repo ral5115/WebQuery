@@ -64,3 +64,4 @@ C:\Users\ASUS\Desktop\Utiles\Debug\Nueva carpeta\Codigo Fuente\WebQuery\WebQuery
 C:\Users\ASUS\Desktop\Utiles\Debug\Nueva carpeta\Codigo Fuente\WebQuery\WebQuery\WebQuery\obj\Debug\netcoreapp2.1\WebQuery.dll
 C:\Users\ASUS\Desktop\Utiles\Debug\Nueva carpeta\Codigo Fuente\WebQuery\WebQuery\WebQuery\obj\Debug\netcoreapp2.1\WebQuery.pdb
 C:\Users\ASUS\Desktop\Utiles\Debug\Nueva carpeta\Codigo Fuente\WebQuery\WebQuery\WebQuery\obj\Debug\netcoreapp2.1\WebQuery.csproj.CopyComplete
+C:\Users\ASUS\Desktop\Utiles\Debug\Nueva carpeta\Codigo Fuente\WebQuery\WebQuery\WebQuery\obj\Debug\netcoreapp2.1\WebQuery.csprojAssemblyReference.cache

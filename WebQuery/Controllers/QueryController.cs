@@ -45,6 +45,7 @@ namespace WebQuery.Controllers
         }
         public  IActionResult Index(string sortOrder,string currentFilter,string searchString, int? page)
         {
+            
             ViewData["NombreSortParm"] = String.IsNullOrEmpty(sortOrder) ? "nombre_desc" : "";
             ViewData["DescripcionSortParm"] = sortOrder == "descripcion_asc" ? "descripcion_desc" : "descripcion_asc";
 
@@ -90,7 +91,7 @@ namespace WebQuery.Controllers
             ViewData["Data"] = querys;
             if (!String.IsNullOrEmpty(searchString))
             {
-                querys = querys.Where(s => s.Cliente.Contains(searchString));
+                querys = querys.Where(s => s.Cliente.Contains(searchString) || s.Cliente_Nit.Contains(searchString) || s.Pedido.Contains(searchString) || s.Fecha.Contains(searchString));
             }
 
             switch (sortOrder)
